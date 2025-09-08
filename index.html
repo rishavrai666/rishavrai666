@@ -14,7 +14,7 @@ html, body {
   color: #c8c8c8;
 }
 
-/* Background video */
+/* Background video with eerie filter */
 #bgVideo {
   position: fixed;
   inset: 0;
@@ -26,7 +26,7 @@ html, body {
   transform: scale(1.02);
 }
 
-/* Wrapper */
+/* Page wrapper */
 .wrap {
   position: relative;
   z-index: 2;
@@ -34,11 +34,11 @@ html, body {
   padding: 50px 20px;
 }
 
-/* Avatar */
+/* Avatar - slightly larger square */
 .avatar img {
-  width: 200px;
-  max-width: 40vw;
-  border-radius: 0;
+  width: 220px;       /* slightly larger */
+  max-width: 40vw;    /* responsive */
+  border-radius: 0;   /* square */
   border: 3px solid #550000;
   box-shadow: 0 0 20px #330000;
   animation: subtlePulse 3s infinite alternate;
@@ -61,7 +61,7 @@ html, body {
   animation: jitter 4s infinite;
 }
 
-/* Social */
+/* Social info */
 .social {
   margin: 20px 0;
   font-size: 18px;
@@ -86,7 +86,7 @@ html, body {
 
 /* Demo link */
 .dontClick {
-  margin: 25px 0 5px 0;
+  margin: 25px 0 5px 0; /* reduced bottom margin */
   font-size: 28px;
   font-weight: bold;
   color: #ff0000;
@@ -105,7 +105,7 @@ html, body {
   color: #ff7700;
   text-shadow: 0 0 5px #ff5500, 0 0 10px #ff3300, 0 0 15px #ff1111;
   animation: devilFlicker 3s infinite alternate;
-  margin-top: 5px;
+  margin-top: 5px; /* closer spacing */
 }
 
 /* Footer */
@@ -127,7 +127,7 @@ html, body {
   z-index: 5;
 }
 
-/* Overlay */
+/* Overlay button */
 #playOverlay {
   position: fixed;
   inset: 0;
@@ -154,23 +154,23 @@ html, body {
 }
 #playOverlay.fadeOut { animation: fadeOut 1s forwards; }
 
-/* Animations */
 @keyframes fadeOut { to { opacity:0; visibility:hidden; } }
 @keyframes flicker {0%,100% {opacity:1;} 10%,30%,50%,70% {opacity:0.5;} 20%,40%,60%,80% {opacity:0.8;}}
 @keyframes devilFlicker {0% {text-shadow: 0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;} 25% {text-shadow: 0 0 3px #ff2222,0 0 6px #990000,0 0 12px #cc0000,0 0 25px #660000;} 50% {text-shadow: 0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;} 75% {text-shadow: 0 0 4px #ff0000,0 0 8px #aa0000,0 0 15px #dd0000,0 0 30px #770000;} 100% {text-shadow: 0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;}}
 @keyframes jitter {0%,100% {transform:translate(0,0);} 25% {transform:translate(-1px,1px);} 50% {transform:translate(1px,-1px);} 75% {transform:translate(-1px,-1px);}}
 @keyframes glitch {0% {transform: translate(0,0);} 20% {transform: translate(-2px,1px);} 40% {transform: translate(2px,-1px);} 60% {transform: translate(-1px,2px);} 80% {transform: translate(1px,-2px);} 100% {transform: translate(0,0);}}
-@keyframes subtlePulse {0% {opacity:1;} 50% {opacity:0.85;} 100% {opacity:1;}}
+@keyframes subtlePulse {0% {opacity:1;} 50% {opacity:0.85;} 100% {opacity:1;}
+}
 </style>
 </head>
 <body>
 
 <video id="bgVideo" autoplay muted loop playsinline>
-  <source src="bg.mp4" type="video/mp4">
+  <source src="https://r2.guns.lol/cc38ad75-72e9-4316-b29e-89a7847fd03f.mp4" type="video/mp4">
 </video>
 
 <div class="wrap">
-  <div class="avatar"><img src="avatar.jpg" alt="avatar"></div>
+  <div class="avatar"><img src="https://i.postimg.cc/1tpXgVSS/unnamed.jpg" alt="avatar"></div>
   <h1 class="name">R!SHAV R4I</h1>
   <p class="bio">𝙾𝚗𝚌𝚎 𝚞𝚙𝚘𝚗 𝚊 𝚝𝚒𝚖𝚎, 𝚝𝚑𝚎 𝙳𝚎𝚟𝚒𝚕 𝚠𝚊𝚜 𝙶𝚘𝚍’𝚜 𝚖𝚘𝚜𝚝 𝚋𝚎𝚕𝚘𝚟𝚎𝚍 𝚊𝚗𝚐𝚎𝚕</p>
 
@@ -180,12 +180,12 @@ html, body {
     <span class="telegram">TG:@rishavrai666</span>
   </div>
 
-  <a href="https://t.me/dontclickme666" class="dontClick" target="_blank">⛧(CLICK FOR DEMO)⛧</a>
+  <a href="https://t.me/dontclickme666" class="dontClick" target="_blank" rel="noopener noreferrer">⛧(CLICK FOR DEMO)⛧</a>
 
   <p class="premiumNotice">For Paid Premium Content Connect on Telegram</p>
 
   <audio id="secondaryAudio" controls preload="auto">
-    <source src="secondary.mp3" type="audio/mp3">
+    <source src="https://r2.guns.lol/4b87bfe0-e73d-4d92-afd7-61518136c249.mp3" type="audio/mp3">
   </audio>
 
   <div class="footer" id="pageViews">Page Views: 31</div>
@@ -194,7 +194,7 @@ html, body {
 <div id="flash"></div>
 
 <audio id="mainAudio" loop preload="auto">
-  <source src="main.mp3" type="audio/mp3">
+  <source src="https://r2.guns.lol/2ec3f421-be5c-45fe-99b2-0549a741a5c9.mp3" type="audio/mp3">
 </audio>
 
 <div id="playOverlay"><button id="overlayPlayBtn">▶ Enter the Abyss</button></div>
@@ -230,4 +230,4 @@ setInterval(() => {
 </script>
 
 </body>
-  </html>
+</html>
