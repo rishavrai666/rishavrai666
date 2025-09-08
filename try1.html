@@ -1,151 +1,209 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>Secure Shell - | Terminal</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <style>
-    :root{--bg:#040405;--text:#8aff7f;--muted:#66c06a}
-    html,body{height:100%;margin:0;font-family:ui-monospace,monospace;background:linear-gradient(180deg,#020203, #051018)}
-    .wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:20px;box-sizing:border-box}
-    .terminal{width:100%;max-width:720px;background:#000a;border-radius:12px;padding:20px;box-shadow:0 10px 40px rgba(0,0,0,.6);color:var(--text)}
-    .header{display:flex;gap:8px;align-items:center;margin-bottom:12px}
-    .dots{display:flex;gap:6px}
-    .dot{width:12px;height:12px;border-radius:50%}
-    .dot.red{background:#ff5f56}.dot.yellow{background:#ffbd2e}.dot.green{background:#27c93f}
-    pre{margin:0;line-height:1.35;white-space:pre-wrap;font-size:15px}
-    .output{height:320px;overflow:auto;padding:12px;background:linear-gradient(180deg,#001,#0000);border-radius:6px;border:1px solid rgba(255,255,255,0.03)}
-    .controls{display:flex;gap:10px;margin-top:12px}
-    button{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);color:var(--text);padding:8px 12px;border-radius:8px;cursor:pointer}
-    button:active{transform:translateY(1px)}
-    .notice{margin-top:14px;color:var(--muted);font-size:13px}
-    .reveal{display:none;margin-top:12px;text-align:center}
-    .meme{max-width:100%;border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,.5)}
-    .progress{height:10px;background:rgba(255,255,255,0.04);border-radius:6px;overflow:hidden;margin-top:6px}
-    .bar{height:100%;width:0%;background:linear-gradient(90deg,#66ff88,#33dd77)}
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <div class="terminal" role="region" aria-label="Fake terminal window">
-      <div class="header">
-        <div class="dots">
-          <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-        </div>
-        <div style="margin-left:10px;color:var(--muted);font-size:13px">localhost — secure-shell</div>
-      </div>
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="utf-8" />  
+<meta name="viewport" content="width=device-width, initial-scale=1" />  
+<title>Rishav Rai | guns.lol</title>  
+<style>  
+html, body {  
+  height: 100%;  
+  margin: 0;  
+  background: #000;  
+  overflow: hidden;  
+  font-family: "Courier New", monospace;  
+  color: #c8c8c8;  
+}  /* Background video with eerie filter */
+#bgVideo {
+position: fixed;
+inset: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+z-index: 0;
+filter: contrast(0.5) brightness(0.5) blur(3px);
+transform: scale(1.02);
+}
 
-      <div class="output" id="output" aria-live="polite"><pre></pre></div>
+/* Page wrapper */
+.wrap {
+position: relative;
+z-index: 2;
+text-align: center;
+padding: 50px 20px;
+}
 
-      <div class="controls">
-        <button id="startBtn">Start Simulation</button>
-        <button id="skipBtn">Skip to End</button>
-      </div>
-      <div class="notice">This is a harmless simulation — nothing is collected, nothing installs. Be kind 😄</div>
+/* Avatar - slightly larger square /
+.avatar img {
+width: 220px;       / slightly larger /
+max-width: 40vw;    / responsive /
+border-radius: 0;   / square */
+border: 3px solid #550000;
+box-shadow: 0 0 20px #330000;
+animation: subtlePulse 3s infinite alternate;
+}
 
-      <div class="reveal" id="reveal">
-        <div style="margin-top:10px">JUST KIDDING! 🎉</div>
-        <img class="meme" src="https://i.imgur.com/0M6bZ6R.png" alt="funny meme (harmless)" />
-      </div>
-    </div>
-  </div>
+/* Name */
+.name {
+font-size: 42px;
+color: #ff1111;
+text-shadow: 0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;
+animation: devilFlicker 2.5s infinite alternate;
+}
 
-  <script>
-    // Script: harmless fake hacking simulation
-    const outputEl = document.getElementById('output').querySelector('pre');
-    const startBtn = document.getElementById('startBtn');
-    const skipBtn = document.getElementById('skipBtn');
-    const revealDiv = document.getElementById('reveal');
+/* Bio */
+.bio {
+font-style: italic;
+color: #aaa;
+font-size: 18px;
+text-shadow: 0 0 1px #000;
+animation: jitter 4s infinite;
+}
 
-    const scriptLines = [
-      "[*] Initializing secure shell...",
-      `[*] Detecting network interfaces...`,
-      `    - wlan0  -> 192.168.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}`,
-      `    - eth0   -> 10.0.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}`,
-      "[*] Scanning ports (this may take a while)...",
-      "-> port 22: open",
-      "-> port 80: open",
-      "-> port 443: open",
-      "[*] Bypassing cinematic firewall... (movie-mode)",
-      "WARNING: elevated privileges granted",
-      "Downloading payload: [████████░░░░] 78%",
-      "Decrypting files... 0x4f6a2b",
-      "Registry check: OK",
-      "Access token: *********************",
-      "EXPORTING: friends_list.csv",
-      "Connecting to mainframe: ✓",
-      "Injecting dramatic tension...",
-      "COMPLETE",
-      "Finalizing..."
-    ];
+/* Social info */
+.social {
+margin: 20px 0;
+font-size: 18px;
+color: #ff4444;
+}
+.social code {
+background: transparent;
+font-weight: bold;
+color: #ff4444;
+text-shadow: 0 0 2px #550000,0 0 5px #330000;
+display: inline-block;
+animation: glitch 2.5s infinite;
+}
+.social .telegram {
+display: block;
+font-size: 24px;
+font-weight: bold;
+color: #ff5555;
+text-shadow: 0 0 4px #ff1111, 0 0 8px #ff4444;
+margin-top: 5px;
+}
 
-    let idx = 0;
-    let bar; // progress element
+/* Demo link /
+.dontClick {
+margin: 25px 0 5px 0; / reduced bottom margin */
+font-size: 28px;
+font-weight: bold;
+color: #ff0000;
+text-shadow: 0 0 3px #ff5555,0 0 6px #880000,0 0 12px #330000;
+display: inline-block;
+animation: glitch 1.5s infinite, flicker 3s infinite;
+cursor: pointer;
+text-decoration: underline;
+letter-spacing: 1px;
+}
 
-    function typeLine(line, speed=20){
-      return new Promise(resolve => {
-        let i=0;
-        const interval = setInterval(()=>{
-          outputEl.textContent += line.charAt(i) || '';
-          outputEl.parentElement.scrollTop = outputEl.parentElement.scrollHeight;
-          i++;
-          if(i>line.length){
-            clearInterval(interval);
-            outputEl.textContent += "\n";
-            resolve();
-          }
-        }, speed);
-      });
-    }
+/* Premium notice /
+.premiumNotice {
+font-size: 24px;
+font-weight: bold;
+color: #ff7700;
+text-shadow: 0 0 5px #ff5500, 0 0 10px #ff3300, 0 0 15px #ff1111;
+animation: devilFlicker 3s infinite alternate;
+margin-top: 5px; / closer spacing */
+}
 
-    async function runSimulation(){
-      startBtn.disabled = true;
-      skipBtn.disabled = false;
-      // header filler
-      await typeLine(">>> AUTH: user@local");
-      await typeLine(">>> SESSION START: " + new Date().toLocaleString());
-      for(idx=0; idx<scriptLines.length; idx++){
-        const line = scriptLines[idx];
-        // insert progress bar before 'Downloading payload'
-        if(line.includes("Downloading payload")){
-          await typeLine("Downloading payload: [                    ] 0%");
-          // create a fake progress update by editing the last line
-          for(let p=1;p<=100;p+=8){
-            await new Promise(r=>setTimeout(r, 80));
-            // replace last line
-            const lines = outputEl.textContent.split("\n");
-            lines[lines.length-2] = `Downloading payload: [${'█'.repeat(Math.floor(p/4))}${' '.repeat(25-Math.floor(p/4))}] ${Math.min(p,100)}%`;
-            outputEl.textContent = lines.join("\n");
-            outputEl.parentElement.scrollTop = outputEl.parentElement.scrollHeight;
-          }
-          outputEl.textContent += "\n";
-        } else {
-          await typeLine(line);
-        }
-      }
-      await typeLine("\n>>> LAUNCHING MOVIE SEQUENCE...");
-      await new Promise(r=>setTimeout(r,700));
-      await typeLine(">>> DONE. Revealing message...");
-      // reveal final message
-      revealDiv.style.display = "block";
-      startBtn.disabled = false;
-      skipBtn.disabled = true;
-    }
+/* Footer */
+.footer {
+color: #ff1111;
+font-size: 14px;
+margin-top: 20px;
+text-shadow: 0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;
+animation: devilFlicker 3s infinite alternate;
+}
 
-    startBtn.addEventListener('click', runSimulation);
+/* Red flash overlay */
+#flash {
+position: fixed;
+inset: 0;
+background: rgba(255,0,0,0.1);
+pointer-events: none;
+opacity: 0;
+z-index: 5;
+}
 
-    skipBtn.addEventListener('click', ()=>{
-      // jump to the end quickly
-      outputEl.textContent = ">>> AUTH: user@local\n>>> SESSION START: " + new Date().toLocaleString() + "\n\n" +
-        scriptLines.join("\n") + "\n\n>>> LAUNCHING MOVIE SEQUENCE...\n>>> DONE. Revealing message...\n";
-      revealDiv.style.display = "block";
-      startBtn.disabled = false;
-      skipBtn.disabled = true;
-      outputEl.parentElement.scrollTop = outputEl.parentElement.scrollHeight;
-    });
+/* Overlay button */
+#playOverlay {
+position: fixed;
+inset: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 10;
+background: rgba(0,0,0,0.95);
+}
+#playOverlay button {
+background: #111;
+color: #ff4444;
+border: 1px solid #550000;
+padding: 18px 30px;
+font-size: 20px;
+font-family: "Courier New", monospace;
+cursor: pointer;
+border-radius: 4px;
+transition: all 0.2s;
+}
+#playOverlay button:hover {
+background: #222;
+border-color: #aa2222;
+}
+#playOverlay.fadeOut { animation: fadeOut 1s forwards; }
 
-    // Optional: make it mobile-friendly (auto-size)
-    window.addEventListener('resize', ()=>{ outputEl.parentElement.scrollTop = outputEl.parentElement.scrollHeight; });
-  </script>
-</body>
-</html>
+@keyframes fadeOut { to { opacity:0; visibility:hidden; } }
+@keyframes flicker {0%,100% {opacity:1;} 10%,30%,50%,70% {opacity:0.5;} 20%,40%,60%,80% {opacity:0.8;}}
+@keyframes devilFlicker {0% {text-shadow: 0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;} 25% {text-shadow: 0 0 3px #ff2222,0 0 6px #990000,0 0 12px #cc0000,0 0 25px #660000;} 50% {text-shadow: 0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;} 75% {text-shadow: 0 0 4px #ff0000,0 0 8px #aa0000,0 0 15px #dd0000,0 0 30px #770000;} 100% {text-shadow: 0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;}}
+@keyframes jitter {0%,100% {transform:translate(0,0);} 25% {transform:translate(-1px,1px);} 50% {transform:translate(1px,-1px);} 75% {transform:translate(-1px,-1px);}}
+@keyframes glitch {0% {transform: translate(0,0);} 20% {transform: translate(-2px,1px);} 40% {transform: translate(2px,-1px);} 60% {transform: translate(-1px,2px);} 80% {transform: translate(1px,-2px);} 100% {transform: translate(0,0);}}
+@keyframes subtlePulse {0% {opacity:1;} 50% {opacity:0.85;} 100% {opacity:1;}
+}
+</style>
+
+</head>  
+<body>  <video id="bgVideo" autoplay muted loop playsinline>  
+  <source src="https://r2.guns.lol/cc38ad75-72e9-4316-b29e-89a7847fd03f.mp4" type="video/mp4">  
+</video>  <div class="wrap">  
+  <div class="avatar"><img src="https://i.postimg.cc/1tpXgVSS/unnamed.jpg" alt="avatar"></div>  
+  <h1 class="name">R!SHAV R4I</h1>  
+  <p class="bio">𝙾𝚗𝚌𝚎 𝚞𝚙𝚘𝚗 𝚊 𝚝𝚒𝚖𝚎, 𝚝𝚑𝚎 𝙳𝚎𝚟𝚒𝚕 𝚠𝚊𝚜 𝙶𝚘𝚍’𝚜 𝚖𝚘𝚜𝚝 𝚋𝚎𝚕𝚘𝚟𝚎𝚍 𝚊𝚗𝚐𝚎𝚕</p>    <div class="social">  
+    Bitcoin: <code>1B14WZ61U1LpbwdDZwUuWYyjjsR1ZqJtfP</code><br>  
+    TRON: <code>TQw2c9xE5pWqzF6YpLkV8mN7bX3Z9a1YRt</code><br>  
+    <span class="telegram">TG:@rishavrai666</span>  
+  </div>  <a href="https://t.me/dontclickme666" class="dontClick" target="_blank" rel="noopener noreferrer">⛧(CLICK FOR DEMO)⛧</a>
+
+  <p class="premiumNotice">For Paid Premium Content Connect on Telegram</p>    <audio id="secondaryAudio" controls preload="auto">  
+    <source src="https://r2.guns.lol/4b87bfe0-e73d-4d92-afd7-61518136c249.mp3" type="audio/mp3">  
+  </audio>    <div class="footer" id="pageViews">Page Views: 31</div>  
+</div>  <div id="flash"></div>  <audio id="mainAudio" loop preload="auto">  
+  <source src="https://r2.guns.lol/2ec3f421-be5c-45fe-99b2-0549a741a5c9.mp3" type="audio/mp3">  
+</audio>  <div id="playOverlay"><button id="overlayPlayBtn">▶ Enter the Abyss</button></div>  <script>  
+const overlay = document.getElementById("playOverlay");  
+const overlayBtn = document.getElementById("overlayPlayBtn");  
+const mainAudio = document.getElementById("mainAudio");  
+const flash = document.getElementById("flash");  
+  
+overlayBtn.addEventListener("click", async () => {  
+  try {  
+    await mainAudio.play();  
+    overlay.classList.add("fadeOut");  
+    setTimeout(()=> overlay.style.display="none", 1000);  
+  } catch (err) {  
+    console.error("Playback error:", err);  
+    alert("Tap again to enable sound");  
+  }  
+});  
+  
+setInterval(() => {  
+  flash.style.opacity = Math.random() * 0.15;  
+  setTimeout(()=> flash.style.opacity=0, 100);  
+}, 2000 + Math.random()*3000);  
+  
+let pageViewsElem = document.getElementById('pageViews');  
+let pageViews = parseInt(pageViewsElem.textContent.replace(/\D/g,''), 10);  
+setInterval(() => {  
+  pageViews += 1;  
+  pageViewsElem.textContent = `Page Views: ${pageViews}`;  
+}, 60000);  
+</script>  </body>  
+</html> 
