@@ -1,0 +1,209 @@
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="utf-8" />  
+<meta name="viewport" content="width=device-width, initial-scale=1" />  
+<title>Rishav Rai | guns.lol</title>  
+<style>  
+html, body {  
+  height: 100%;  
+  margin: 0;  
+  background: #000;  
+  overflow: hidden;  
+  font-family: "Courier New", monospace;  
+  color: #c8c8c8;  
+}  /* Background video with eerie filter */
+#bgVideo {
+position: fixed;
+inset: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+z-index: 0;
+filter: contrast(0.5) brightness(0.5) blur(3px);
+transform: scale(1.02);
+}
+
+/* Page wrapper */
+.wrap {
+position: relative;
+z-index: 2;
+text-align: center;
+padding: 50px 20px;
+}
+
+/* Avatar - slightly larger square /
+.avatar img {
+width: 220px;       / slightly larger /
+max-width: 40vw;    / responsive /
+border-radius: 0;   / square */
+border: 3px solid #550000;
+box-shadow: 0 0 20px #330000;
+animation: subtlePulse 3s infinite alternate;
+}
+
+/* Name */
+.name {
+font-size: 42px;
+color: #ff1111;
+text-shadow: 0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;
+animation: devilFlicker 2.5s infinite alternate;
+}
+
+/* Bio */
+.bio {
+font-style: italic;
+color: #aaa;
+font-size: 18px;
+text-shadow: 0 0 1px #000;
+animation: jitter 4s infinite;
+}
+
+/* Social info */
+.social {
+margin: 20px 0;
+font-size: 18px;
+color: #ff4444;
+}
+.social code {
+background: transparent;
+font-weight: bold;
+color: #ff4444;
+text-shadow: 0 0 2px #550000,0 0 5px #330000;
+display: inline-block;
+animation: glitch 2.5s infinite;
+}
+.social .telegram {
+display: block;
+font-size: 24px;
+font-weight: bold;
+color: #ff5555;
+text-shadow: 0 0 4px #ff1111, 0 0 8px #ff4444;
+margin-top: 5px;
+}
+
+/* Demo link /
+.dontClick {
+margin: 25px 0 5px 0; / reduced bottom margin */
+font-size: 28px;
+font-weight: bold;
+color: #ff0000;
+text-shadow: 0 0 3px #ff5555,0 0 6px #880000,0 0 12px #330000;
+display: inline-block;
+animation: glitch 1.5s infinite, flicker 3s infinite;
+cursor: pointer;
+text-decoration: underline;
+letter-spacing: 1px;
+}
+
+/* Premium notice /
+.premiumNotice {
+font-size: 24px;
+font-weight: bold;
+color: #ff7700;
+text-shadow: 0 0 5px #ff5500, 0 0 10px #ff3300, 0 0 15px #ff1111;
+animation: devilFlicker 3s infinite alternate;
+margin-top: 5px; / closer spacing */
+}
+
+/* Footer */
+.footer {
+color: #ff1111;
+font-size: 14px;
+margin-top: 20px;
+text-shadow: 0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;
+animation: devilFlicker 3s infinite alternate;
+}
+
+/* Red flash overlay */
+#flash {
+position: fixed;
+inset: 0;
+background: rgba(255,0,0,0.1);
+pointer-events: none;
+opacity: 0;
+z-index: 5;
+}
+
+/* Overlay button */
+#playOverlay {
+position: fixed;
+inset: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 10;
+background: rgba(0,0,0,0.95);
+}
+#playOverlay button {
+background: #111;
+color: #ff4444;
+border: 1px solid #550000;
+padding: 18px 30px;
+font-size: 20px;
+font-family: "Courier New", monospace;
+cursor: pointer;
+border-radius: 4px;
+transition: all 0.2s;
+}
+#playOverlay button:hover {
+background: #222;
+border-color: #aa2222;
+}
+#playOverlay.fadeOut { animation: fadeOut 1s forwards; }
+
+@keyframes fadeOut { to { opacity:0; visibility:hidden; } }
+@keyframes flicker {0%,100% {opacity:1;} 10%,30%,50%,70% {opacity:0.5;} 20%,40%,60%,80% {opacity:0.8;}}
+@keyframes devilFlicker {0% {text-shadow: 0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;} 25% {text-shadow: 0 0 3px #ff2222,0 0 6px #990000,0 0 12px #cc0000,0 0 25px #660000;} 50% {text-shadow: 0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;} 75% {text-shadow: 0 0 4px #ff0000,0 0 8px #aa0000,0 0 15px #dd0000,0 0 30px #770000;} 100% {text-shadow: 0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;}}
+@keyframes jitter {0%,100% {transform:translate(0,0);} 25% {transform:translate(-1px,1px);} 50% {transform:translate(1px,-1px);} 75% {transform:translate(-1px,-1px);}}
+@keyframes glitch {0% {transform: translate(0,0);} 20% {transform: translate(-2px,1px);} 40% {transform: translate(2px,-1px);} 60% {transform: translate(-1px,2px);} 80% {transform: translate(1px,-2px);} 100% {transform: translate(0,0);}}
+@keyframes subtlePulse {0% {opacity:1;} 50% {opacity:0.85;} 100% {opacity:1;}
+}
+</style>
+
+</head>  
+<body>  <video id="bgVideo" autoplay muted loop playsinline>  
+  <source src="https://r2.guns.lol/cc38ad75-72e9-4316-b29e-89a7847fd03f.mp4" type="video/mp4">  
+</video>  <div class="wrap">  
+  <div class="avatar"><img src="https://i.postimg.cc/1tpXgVSS/unnamed.jpg" alt="avatar"></div>  
+  <h1 class="name">R!SHAV R4I</h1>  
+  <p class="bio">𝙾𝚗𝚌𝚎 𝚞𝚙𝚘𝚗 𝚊 𝚝𝚒𝚖𝚎, 𝚝𝚑𝚎 𝙳𝚎𝚟𝚒𝚕 𝚠𝚊𝚜 𝙶𝚘𝚍’𝚜 𝚖𝚘𝚜𝚝 𝚋𝚎𝚕𝚘𝚟𝚎𝚍 𝚊𝚗𝚐𝚎𝚕</p>    <div class="social">  
+    Bitcoin: <code>1B14WZ61U1LpbwdDZwUuWYyjjsR1ZqJtfP</code><br>  
+    TRON: <code>TQw2c9xE5pWqzF6YpLkV8mN7bX3Z9a1YRt</code><br>  
+    <span class="telegram">TG:@rishavrai666</span>  
+  </div>  <a href="https://t.me/dontclickme666" class="dontClick" target="_blank" rel="noopener noreferrer">⛧(CLICK FOR DEMO)⛧</a>
+
+  <p class="premiumNotice">For Paid Premium Content Connect on Telegram</p>    <audio id="secondaryAudio" controls preload="auto">  
+    <source src="https://r2.guns.lol/4b87bfe0-e73d-4d92-afd7-61518136c249.mp3" type="audio/mp3">  
+  </audio>    <div class="footer" id="pageViews">Page Views: 31</div>  
+</div>  <div id="flash"></div>  <audio id="mainAudio" loop preload="auto">  
+  <source src="https://r2.guns.lol/2ec3f421-be5c-45fe-99b2-0549a741a5c9.mp3" type="audio/mp3">  
+</audio>  <div id="playOverlay"><button id="overlayPlayBtn">▶ Enter the Abyss</button></div>  <script>  
+const overlay = document.getElementById("playOverlay");  
+const overlayBtn = document.getElementById("overlayPlayBtn");  
+const mainAudio = document.getElementById("mainAudio");  
+const flash = document.getElementById("flash");  
+  
+overlayBtn.addEventListener("click", async () => {  
+  try {  
+    await mainAudio.play();  
+    overlay.classList.add("fadeOut");  
+    setTimeout(()=> overlay.style.display="none", 1000);  
+  } catch (err) {  
+    console.error("Playback error:", err);  
+    alert("Tap again to enable sound");  
+  }  
+});  
+  
+setInterval(() => {  
+  flash.style.opacity = Math.random() * 0.15;  
+  setTimeout(()=> flash.style.opacity=0, 100);  
+}, 2000 + Math.random()*3000);  
+  
+let pageViewsElem = document.getElementById('pageViews');  
+let pageViews = parseInt(pageViewsElem.textContent.replace(/\D/g,''), 10);  
+setInterval(() => {  
+  pageViews += 1;  
+  pageViewsElem.textContent = `Page Views: ${pageViews}`;  
+}, 60000);  
+</script>  </body>  
+</html> 
