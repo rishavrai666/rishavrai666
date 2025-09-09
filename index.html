@@ -3,27 +3,25 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Rishav Rai |</title>
+<title>R!shav R4i |</title>
 
 <meta name="google-site-verification" content="1PulNpILMxfMcjD777nHQMFrxFFEo-SuJSLijBS9dBI" />
 
 <style>
-html, body { height:100%; margin:0; background:#000; overflow:hidden; font-family:"Courier New", monospace; color:#c8c8c8; }
+html, body { 
+  height:100%; 
+  margin:0; 
+  background:#000; 
+  font-family:"Courier New", monospace; 
+  color:#c8c8c8; 
+  overflow-x:hidden;  /* block sideways scroll */
+  overflow-y:auto;    /* allow vertical scroll (mobile friendly) */
+}
 #bgVideo { position: fixed; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; filter:contrast(0.5) brightness(0.5) blur(3px); transform:scale(1.02);}
 .wrap { position: relative; z-index:2; text-align:center; padding:50px 20px;}
-.avatar img { 
-  width:220px; 
-  max-width:40vw; 
-  border-radius:0; 
-  border:3px solid #550000; 
-  box-shadow:0 0 20px #330000; 
-  animation:subtlePulse 3s infinite alternate; 
-  transform: scale(1.15);
-  object-fit: cover;           
-  object-position: top center; 
-}
-.name { font-size:42px; color:#ff1111; text-shadow:0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000; }
-.bio { font-style:italic; color:#aaa; font-size:18px; text-shadow:0 0 1px #000; }
+.avatar img { width:220px; max-width:40vw; border-radius:0; border:3px solid #550000; box-shadow:0 0 20px #330000; animation:subtlePulse 3s infinite alternate; transform: scale(1.15); object-fit: cover; object-position: top center;}
+.name { font-size:42px; color:#ff1111; text-shadow:0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000; animation:devilFlicker 2.5s infinite alternate;}
+.bio { font-style:italic; color:#aaa; font-size:18px; text-shadow:0 0 1px #000; animation:jitter 4s infinite;}
 .social { margin:20px 0; font-size:18px; color:#ff4444;}
 .social code { background:transparent; font-weight:bold; color:#ff4444; text-shadow:0 0 2px #550000,0 0 5px #330000; display:inline-block; animation:glitch 2.5s infinite;}
 .social .telegram { display:block; font-size:24px; font-weight:bold; color:#ff5555; text-shadow:0 0 4px #ff1111,0 0 8px #ff4444; margin-top:5px;}
@@ -39,6 +37,7 @@ html, body { height:100%; margin:0; background:#000; overflow:hidden; font-famil
 @keyframes fadeOut { to { opacity:0; visibility:hidden; } }
 @keyframes flicker {0%,100% {opacity:1;} 10%,30%,50%,70% {opacity:0.5;} 20%,40%,60%,80% {opacity:0.8;} }
 @keyframes devilFlicker {0% {text-shadow:0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;} 25% {text-shadow:0 0 3px #ff2222,0 0 6px #990000,0 0 12px #cc0000,0 0 25px #660000;} 50% {text-shadow:0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;} 75% {text-shadow:0 0 4px #ff0000,0 0 8px #aa0000,0 0 15px #dd0000,0 0 30px #770000;} 100% {text-shadow:0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;} }
+@keyframes jitter {0%,100% {transform:translate(0,0);} 25% {transform:translate(-1px,1px);} 50% {transform:translate(1px,-1px);} 75% {transform:translate(-1px,-1px);} }
 @keyframes glitch {0% {transform:translate(0,0);}20%{transform:translate(-2px,1px);}40%{transform:translate(2px,-1px);}60%{transform:translate(-1px,2px);}80%{transform:translate(1px,-2px);}100%{transform:translate(0,0);} }
 @keyframes subtlePulse {0%{opacity:1;}50%{opacity:0.85;}100%{opacity:1;}}
 </style>
@@ -84,6 +83,13 @@ overlayBtn.addEventListener("click", async () => {
     await mainAudio.play();
     overlay.classList.add("fadeOut");
     setTimeout(()=> overlay.style.display="none", 1000);
+
+    // Show hacked flash only once after entering
+    setTimeout(()=>{
+      hackedFlash.style.opacity=1;
+      setTimeout(()=>{hackedFlash.style.opacity=0;}, 600);
+    }, 4000);
+
   } catch (err) {
     console.error("Playback error:", err);
     alert("Tap again to enable sound");
@@ -101,14 +107,6 @@ setInterval(() => {
   pageViews += 1;
   pageViewsElem.textContent = `Page Views: ${pageViews}`;
 }, 60000);
-
-// ===== HACKED BLUE FLASH (once per visit) =====
-window.addEventListener("load", ()=>{
-  setTimeout(()=>{
-    hackedFlash.style.opacity = 1;
-    setTimeout(()=>{ hackedFlash.style.opacity = 0; }, 800);
-  }, 4000); // flash happens 4 sec after page loads
-});
 </script>
 </body>
-</html>
+    </html>
