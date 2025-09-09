@@ -3,37 +3,98 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>R!shav R4i |</title>
+<title>R!SHAV R4i |</title>
 
 <meta name="google-site-verification" content="1PulNpILMxfMcjD777nHQMFrxFFEo-SuJSLijBS9dBI" />
 
 <style>
 html, body { 
-  height:100%; 
-  margin:0; 
-  background:#000; 
-  font-family:"Courier New", monospace; 
-  color:#c8c8c8; 
-  overflow-x:hidden;  /* block sideways scroll */
-  overflow-y:auto;    /* allow vertical scroll (mobile friendly) */
+  height:100%; margin:0; background:#000; 
+  overflow:auto; font-family:"Courier New", monospace; color:#c8c8c8; 
 }
-#bgVideo { position: fixed; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; filter:contrast(0.5) brightness(0.5) blur(3px); transform:scale(1.02);}
+#bgVideo { 
+  position: fixed; inset:0; width:100%; height:100%; 
+  object-fit:cover; z-index:0; 
+  filter:contrast(0.5) brightness(0.5) blur(3px); 
+  transform:scale(1.02);
+}
 .wrap { position: relative; z-index:2; text-align:center; padding:50px 20px;}
-.avatar img { width:220px; max-width:40vw; border-radius:0; border:3px solid #550000; box-shadow:0 0 20px #330000; animation:subtlePulse 3s infinite alternate; transform: scale(1.15); object-fit: cover; object-position: top center;}
-.name { font-size:42px; color:#ff1111; text-shadow:0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000; animation:devilFlicker 2.5s infinite alternate;}
-.bio { font-style:italic; color:#aaa; font-size:18px; text-shadow:0 0 1px #000; animation:jitter 4s infinite;}
+.avatar img { 
+  width:250px; max-width:45vw; border-radius:0; 
+  border:3px solid #550000; box-shadow:0 0 20px #330000; 
+  animation:subtlePulse 3s infinite alternate;
+}
+.name { 
+  font-size:42px; color:#ff1111; 
+  text-shadow:0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000; 
+  animation:devilFlicker 2.5s infinite alternate;
+}
+.bio { 
+  font-style:italic; color:#aaa; font-size:18px; 
+  text-shadow:0 0 1px #000; animation:jitter 4s infinite;
+}
 .social { margin:20px 0; font-size:18px; color:#ff4444;}
-.social code { background:transparent; font-weight:bold; color:#ff4444; text-shadow:0 0 2px #550000,0 0 5px #330000; display:inline-block; animation:glitch 2.5s infinite;}
-.social .telegram { display:block; font-size:24px; font-weight:bold; color:#ff5555; text-shadow:0 0 4px #ff1111,0 0 8px #ff4444; margin-top:5px;}
-.dontClick { margin:25px 0 5px 0; font-size:28px; font-weight:bold; color:#ff0000; text-shadow:0 0 3px #ff5555,0 0 6px #880000,0 0 12px #330000; display:inline-block; animation:glitch 1.5s infinite, flicker 3s infinite; cursor:pointer; text-decoration:underline; letter-spacing:1px;}
-.premiumNotice { font-size:24px; font-weight:bold; color:#ff7700; text-shadow:0 0 5px #ff5500,0 0 10px #ff3300,0 0 15px #ff1111; animation:devilFlicker 3s infinite alternate; margin-top:5px;}
-.footer { color:#ff1111; font-size:14px; margin-top:20px; text-shadow:0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000; animation:devilFlicker 3s infinite alternate;}
+.social code { 
+  background:transparent; font-weight:bold; 
+  color:#7a3cff; /* scary purple-blue tone */ 
+  text-shadow:0 0 2px #550055,0 0 5px #220022; 
+  display:inline-block; animation:glitch 2.5s infinite;
+}
+.social .telegram { 
+  display:block; font-size:24px; font-weight:bold; 
+  color:#ff5555; text-shadow:0 0 4px #ff1111,0 0 8px #ff4444; 
+  margin-top:5px;
+}
+.dontClick { 
+  margin:25px 0 5px 0; font-size:28px; font-weight:bold; 
+  color:#ff0000; text-shadow:0 0 3px #ff5555,0 0 6px #880000,0 0 12px #330000; 
+  display:inline-block; animation:glitch 1.5s infinite, flicker 3s infinite; 
+  cursor:pointer; text-decoration:underline; letter-spacing:1px;
+}
+.premiumNotice { 
+  font-size:24px; font-weight:bold; color:#ff7700; 
+  text-shadow:0 0 5px #ff5500,0 0 10px #ff3300,0 0 15px #ff1111; 
+  animation:devilFlicker 3s infinite alternate; margin-top:5px;
+}
+.footer { 
+  color:#ff1111; font-size:14px; margin-top:20px; 
+  text-shadow:0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000; 
+  animation:devilFlicker 3s infinite alternate;
+}
 #flash { position: fixed; inset:0; background:rgba(255,0,0,0.1); pointer-events:none; opacity:0; z-index:5; }
-#hackedFlash { position: fixed; inset:0; background:blue; opacity:0; z-index:15; pointer-events:none; }
-#playOverlay { position: fixed; inset:0; display:flex; align-items:center; justify-content:center; z-index:10; background: rgba(0,0,0,0.95);}
+
+/* HACKED BLUE FLASH + 666 */
+#hackedFlash { 
+  position: fixed; inset:0; 
+  background:radial-gradient(circle, rgba(10,0,40,1) 0%, rgba(0,0,0,1) 85%); 
+  opacity:0; z-index:15; pointer-events:none; 
+  display:flex; align-items:center; justify-content:center; 
+}
+#hacked666 {
+  font-size: 18vw; 
+  font-weight: 900; 
+  font-family: "Courier New", monospace;
+  color: #ff0000; 
+  text-shadow: 
+    0 0 10px #ff0000,
+    0 0 25px #aa0000,
+    0 0 50px #550000,
+    0 0 120px #220000;
+  opacity: 0;
+  transform: scale(1) rotate(0deg);
+}
+@keyframes spin666 {
+  0% { opacity:0; transform:scale(0.9) rotate(0deg);}
+  10% { opacity:1;}
+  100% { opacity:1; transform:scale(1.1) rotate(4320deg);} /* 12 full spins clockwise */
+}
+
+/* Overlay button */
+#playOverlay { position: fixed; inset:0; display:flex; align-items:center; justify-content:center; z-index:20; background: rgba(0,0,0,0.95);}
 #playOverlay button { background:#111; color:#ff4444; border:1px solid #550000; padding:18px 30px; font-size:20px; font-family:"Courier New", monospace; cursor:pointer; border-radius:4px; transition: all 0.2s;}
 #playOverlay button:hover { background:#222; border-color:#aa2222;}
-#playOverlay.fadeOut { animation:fadeOut 1s forwards;}
+#playOverlay.fadeOut { animation:fadeOut 1s forwards; }
+
 @keyframes fadeOut { to { opacity:0; visibility:hidden; } }
 @keyframes flicker {0%,100% {opacity:1;} 10%,30%,50%,70% {opacity:0.5;} 20%,40%,60%,80% {opacity:0.8;} }
 @keyframes devilFlicker {0% {text-shadow:0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;} 25% {text-shadow:0 0 3px #ff2222,0 0 6px #990000,0 0 12px #cc0000,0 0 25px #660000;} 50% {text-shadow:0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;} 75% {text-shadow:0 0 4px #ff0000,0 0 8px #aa0000,0 0 15px #dd0000,0 0 30px #770000;} 100% {text-shadow:0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;} }
@@ -65,7 +126,8 @@ html, body {
 </div>
 
 <div id="flash"></div>
-<div id="hackedFlash"></div>
+<div id="hackedFlash"><div id="hacked666">666</div></div>
+
 <audio id="mainAudio" loop preload="auto">
   <source src="https://r2.guns.lol/2ec3f421-be5c-45fe-99b2-0549a741a5c9.mp3" type="audio/mp3">
 </audio>
@@ -77,36 +139,39 @@ const overlayBtn = document.getElementById("overlayPlayBtn");
 const mainAudio = document.getElementById("mainAudio");
 const flash = document.getElementById("flash");
 const hackedFlash = document.getElementById("hackedFlash");
+const hacked666 = document.getElementById("hacked666");
 
 overlayBtn.addEventListener("click", async () => {
   try {
     await mainAudio.play();
     overlay.classList.add("fadeOut");
     setTimeout(()=> overlay.style.display="none", 1000);
-
-    // Show hacked flash only once after entering
-    setTimeout(()=>{
-      hackedFlash.style.opacity=1;
-      setTimeout(()=>{hackedFlash.style.opacity=0;}, 600);
-    }, 4000);
-
   } catch (err) {
     console.error("Playback error:", err);
     alert("Tap again to enable sound");
   }
 });
 
+// Red flash effect
 setInterval(() => {
   flash.style.opacity = Math.random() * 0.15;
   setTimeout(()=> flash.style.opacity=0, 100);
 }, 2000 + Math.random()*3000);
 
+// Page views increment
 let pageViewsElem = document.getElementById('pageViews');
 let pageViews = parseInt(pageViewsElem.textContent.replace(/\D/g,''), 10);
 setInterval(() => {
   pageViews += 1;
   pageViewsElem.textContent = `Page Views: ${pageViews}`;
 }, 60000);
+
+// ===== HACKED BLUE FLASH + 666 (ONCE after 6s) =====
+setTimeout(() => {
+  hackedFlash.style.opacity = 1;
+  hacked666.style.animation = "spin666 3s forwards";
+  setTimeout(() => { hackedFlash.style.opacity = 0; }, 2500);
+}, 6000);
 </script>
 </body>
     </html>
