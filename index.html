@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>rishavrai666 | Official Site</title>
+
+<title>rishavrai666 - Official Site</title>
 <meta name="description" content="Official rishavrai666 website. Connect on Telegram @rishavrai666, explore projects, premium content, and more.">
 <link rel="canonical" href="https://www.rishavrai666.com/">
 
@@ -49,21 +50,7 @@ html,body{margin:0;padding:0;height:100%;font-family:'Courier New', monospace;co
 #bgVideo{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;filter:contrast(0.5) brightness(0.5) blur(3px);transform:scale(1.02);}
 .wrap{position:relative;z-index:2;text-align:center;padding:50px 20px;}
 .avatar img{width:250px;max-width:45vw;border:3px solid #550000;box-shadow:0 0 20px #330000;animation:subtlePulse 3s infinite alternate;}
-
-/* Gradient Neon Header */
-@keyframes neonGlow{
-0%,100%{text-shadow:0 0 5px #ff1111,0 0 10px #aa0000,0 0 20px #550000;}
-50%{text-shadow:0 0 10px #ff4444,0 0 20px #ff0000,0 0 30px #aa0000;}
-}
-.name{
-font-size:64px;
-font-weight:900;
-background: linear-gradient(90deg, #ff0000, #ff7700, #ff0000);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-animation: neonGlow 1.5s infinite alternate;
-margin-bottom:20px;
-}
+.name{font-size:42px;color:#ff1111;text-shadow:0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;animation:devilFlicker 2.5s infinite alternate;}
 .bio{font-style:italic;color:#aaa;font-size:18px;text-shadow:0 0 1px #000;animation:jitter 4s infinite;}
 .social{margin:20px 0;font-size:18px;color:#ff4444;}
 .social code{background:transparent;font-weight:bold;color:#7a3cff;text-shadow:0 0 2px #550055,0 0 5px #220022;display:inline-block;animation:glitch 2.5s infinite;}
@@ -75,6 +62,17 @@ margin-bottom:20px;
 #flash{position:fixed;inset:0;background:rgba(255,0,0,0.1);pointer-events:none;opacity:0;z-index:5;}
 #hackedFlash{position:fixed;inset:0;background:radial-gradient(circle, rgba(10,0,40,1) 0%, rgba(0,0,0,1) 85%);opacity:0;z-index:15;pointer-events:none;display:flex;align-items:center;justify-content:center;}
 #hacked666{font-size:18vw;font-weight:900;font-family:"Courier New",monospace;color:#ff0000;text-shadow:0 0 10px #ff0000,0 0 25px #aa0000,0 0 50px #550000,0 0 120px #220000;opacity:0;transform:scale(1) rotate(0deg);}
+@keyframes spin666{0%{opacity:0;transform:scale(0.9) rotate(0deg);}10%{opacity:1;}100%{opacity:1;transform:scale(1.1) rotate(4320deg);}}
+#playOverlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:20;background: rgba(0,0,0,0.95);}
+#playOverlay button{background:#111;color:#ff4444;border:1px solid #550000;padding:18px 30px;font-size:20px;font-family:"Courier New",monospace;cursor:pointer;border-radius:4px;transition:all 0.2s;}
+#playOverlay button:hover{background:#222;border-color:#aa2222;}
+#playOverlay.fadeOut{animation:fadeOut 1s forwards;}
+@keyframes fadeOut{to{opacity:0;visibility:hidden;}}
+@keyframes flicker{0%,100%{opacity:1;}10%,30%,50%,70%{opacity:0.5;}20%,40%,60%,80%{opacity:0.8;} }
+@keyframes devilFlicker{0%{text-shadow:0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;}25%{text-shadow:0 0 3px #ff2222,0 0 6px #990000,0 0 12px #cc0000,0 0 25px #660000;}50%{text-shadow:0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;}75%{text-shadow:0 0 4px #ff0000,0 0 8px #aa0000,0 0 15px #dd0000,0 0 30px #770000;}100%{text-shadow:0 0 2px #ff5555,0 0 5px #880000,0 0 10px #aa0000,0 0 20px #550000;} }
+@keyframes jitter{0%,100%{transform:translate(0,0);}25%{transform:translate(-1px,1px);}50%{transform:translate(1px,-1px);}75%{transform:translate(-1px,-1px);}}
+@keyframes glitch{0%{transform:translate(0,0);}20%{transform:translate(-2px,1px);}40%{transform:translate(2px,-1px);}60%{transform:translate(-1px,2px);}80%{transform:translate(1px,-2px);}100%{transform:translate(0,0);}}
+@keyframes subtlePulse{0%{opacity:1;}50%{opacity:0.85;}100%{opacity:1;}}
 </style>
 </head>
 <body>
@@ -87,29 +85,22 @@ margin-bottom:20px;
   <div class="avatar">
     <img src="https://raw.githubusercontent.com/rishavrai666/rishavrai666/a92a1cc14b17bb6a18f86de77f07d97d109ae2b3/IMG_20250910_024242.jpg" alt="avatar">
   </div>
-
-  <!-- Flashy header -->
-  <h1 class="name">⛧ rishavrai666 ⛧</h1>
-
-  <p class="bio">𝙾𝚗𝚌𝚎 𝚞𝚙𝚘𝚗 𝚊 𝚝𝚒𝚖𝚎, 𝚝𝚑𝚎 𝙳𝚎𝚟𝚒𝚕 𝚠𝚊𝚜 𝙶𝚘𝚍’𝚜 𝚖𝚘𝚜𝚝 𝚋𝚎𝚕𝚘𝚟𝚎𝚍 𝚊𝚗𝚐𝚎𝚕</p>
-
+  <h1 class="name">R!$H@V R4!</h1>
+  <p class="bio">Official rishavrai666 site – explore projects, premium content, and connect on Telegram & YouTube.</p>
   <div class="social">
-    Bitcoin: <code>1B14WZ61U1LpbwdDZwUuWYyjjsR1ZqJtfP</code><br>
-    TRON: <code>TQw2c9xE5pWqzF6YpLkV8mN7bX3Z9a1YRt</code><br>
-    <!-- Telegram & YouTube below crypto -->
+    <code>Bitcoin: 1B14WZ61U1LpbwdDZwUuWYyjjsR1ZqJtfP</code>
+    <code>TRON: TQw2c9xE5pWqzF6YpLkV8mN7bX3Z9a1YRt</code>
     <a href="https://t.me/rishavrai666" target="_blank" rel="noopener noreferrer">Telegram: @rishavrai666</a>
-    <a href="https://www.youtube.com/@rishavrai666" target="_blank" rel="noopener noreferrer">YouTube: rishavrai666</a>
+    <a href="https://www.youtube.com/@rishavrai666" target="_blank" rel="noopener noreferrer">YouTube: @rishavrai666</a>
   </div>
-
   <a href="https://uploda.sh/f/tvG76r3DzkNC" class="dontClick" target="_blank" rel="noopener noreferrer">⛧(CLICK FOR DEMO)⛧</a>
   <p class="premiumNotice">For Paid Premium Content Connect on Telegram</p>
-
   <audio id="secondaryAudio" controls preload="auto">
     <source src="https://r2.guns.lol/4b87bfe0-e73d-4d92-afd7-61518136c249.mp3" type="audio/mp3">
   </audio>
-
   <div class="footer" id="pageViews">Page Views: 31</div>
 </div>
+
 <div id="flash"></div>
 <div id="hackedFlash"><div id="hacked666">666</div></div>
 
@@ -117,51 +108,26 @@ margin-bottom:20px;
   <source src="https://r2.guns.lol/2ec3f421-be5c-45fe-99b2-0549a741a5c9.mp3" type="audio/mp3">
 </audio>
 
-<div id="playOverlay">
-  <button id="overlayPlayBtn">▶ Enter the Abyss</button>
-</div>
+<div id="playOverlay"><button id="overlayPlayBtn">▶ Enter the Abyss</button></div>
 
 <script>
-const overlay = document.getElementById("playOverlay");
-const overlayBtn = document.getElementById("overlayPlayBtn");
-const mainAudio = document.getElementById("mainAudio");
-const flash = document.getElementById("flash");
-const hackedFlash = document.getElementById("hackedFlash");
-const hacked666 = document.getElementById("hacked666");
+const overlay=document.getElementById("playOverlay");
+const overlayBtn=document.getElementById("overlayPlayBtn");
+const mainAudio=document.getElementById("mainAudio");
+const flash=document.getElementById("flash");
+const hackedFlash=document.getElementById("hackedFlash");
+const hacked666=document.getElementById("hacked666");
 
-// Overlay play button
-overlayBtn.addEventListener("click", async () => {
-  try {
-    await mainAudio.play();
-    overlay.classList.add("fadeOut");
-    setTimeout(() => overlay.style.display = "none", 1000);
-  } catch (err) {
-    console.error("Playback error:", err);
-    alert("Tap again to enable sound");
-  }
-});
+overlayBtn.addEventListener("click",async()=>{try{await mainAudio.play();overlay.classList.add("fadeOut");setTimeout(()=>overlay.style.display="none",1000);}catch(err){console.error("Playback error:",err);alert("Tap again to enable sound");}});
 
-// Red flash effect
-setInterval(() => {
-  flash.style.opacity = Math.random() * 0.15;
-  setTimeout(() => flash.style.opacity = 0, 100);
-}, 2000 + Math.random() * 3000);
+setInterval(()=>{flash.style.opacity=Math.random()*0.15;setTimeout(()=>flash.style.opacity=0,100);},2000+Math.random()*3000);
 
-// Page views increment
-let pageViewsElem = document.getElementById('pageViews');
-let pageViews = parseInt(pageViewsElem.textContent.replace(/\D/g,''), 10);
-setInterval(() => {
-  pageViews += 1;
-  pageViewsElem.textContent = `Page Views: ${pageViews}`;
-}, 60000);
+let pageViewsElem=document.getElementById('pageViews');
+let pageViews=parseInt(pageViewsElem.textContent.replace(/\D/g,''),10);
+setInterval(()=>{pageViews+=1;pageViewsElem.textContent=`Page Views: ${pageViews}`;},60000);
 
-// Hacked 666 flash animation after 6s
-setTimeout(() => {
-  hackedFlash.style.opacity = 1;
-  hacked666.style.animation = "spin666 3s forwards";
-  setTimeout(() => { hackedFlash.style.opacity = 0; }, 2500);
-}, 6000);
+setTimeout(()=>{hackedFlash.style.opacity=1;hacked666.style.animation="spin666 3s forwards";setTimeout(()=>{hackedFlash.style.opacity=0;},2500);},6000);
 </script>
 
 </body>
-</html>
+    </html>
